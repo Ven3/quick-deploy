@@ -1,0 +1,14 @@
+version: '3.1'
+name: gitblit
+
+services:
+  gitea:
+    image: gitblit/gitblit:1.9
+    container_name: gitblit
+    ports:
+      - 8080:8080
+      - 8443:8443
+      - 9418:9418
+      - 29418:29418
+    volumes:
+      - ./data/:/var/opt/gitblit/srv

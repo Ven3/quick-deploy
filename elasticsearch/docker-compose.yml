@@ -1,0 +1,30 @@
+version: '3.1'
+# name: "elk"
+
+services:
+
+  elasticSearch:
+    image: elasticsearch:7.17.7
+    container_name: "elasticsearch"
+    environment:
+      - "ES_JAVA_OPS=-Xms2G -Xmx4G"
+      - "discovery.type=single-node"
+      - "ES_PORT=127.0.0.1:9200"
+    # networks:
+    #   - elastic
+    ports: 
+      - 9200:9200
+      - 9300:9300
+    volumes:
+      - ./data:/usr/share/elasticsearch/data
+      - ./logs:/usr/share/elasticsearch/logs
+      - ./plugins:/usr/share/elasticsearch/plugins
+      # - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      # - ./config/jvm.options:/usr/share/elasticsearch/config/jvm.options
+  kibana:
+    image: kibana:7.17.7
+    container_name: kibana
+    environment:
+      - "ELASTICSEARCH_HOST=http://elasticsearch:9222"
+    ports:
+      - 5601:5601

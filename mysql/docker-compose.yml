@@ -1,0 +1,16 @@
+version: '3.1'
+name: mysql
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_standalone
+    ports:
+      - 3306:3306
+    volumes:
+      - ./3306/data:/var/lib/mysql
+      # - ./3306/config:/etc/mysql/conf.d
+    environment:
+      - MYSQL_ROOT_PASSWORD=Mypwd123
+    command: --lower_case_table_names=1
+    restart: always

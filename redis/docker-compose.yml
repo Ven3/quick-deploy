@@ -1,0 +1,88 @@
+version: '3.1'
+name: "redis_cluster"
+
+services:
+
+  node1:
+    container_name: redis-node1
+    image: redis:6.2.12
+    ports:
+      - 6381:6381
+      - 16381:16381
+    volumes:
+      - ./rnode1/data:/data
+      - ./rnode1/config:/etc/redis
+
+    command: ["redis-server","/etc/redis/redis.conf"]
+#     restart: always
+
+  node2:
+    container_name: redis-node2
+    image: redis:6.2.12
+    ports:
+      - 6382:6382
+      - 16382:16382
+    volumes:
+      - ./rnode2/data:/data
+      - ./rnode2/config:/etc/redis
+    command: ["redis-server","/etc/redis/redis.conf"]
+#     restart: always
+
+  node3:
+    container_name: redis-node3
+    image: redis:6.2.12
+    ports:
+      - 6383:6383
+      - 16383:16383
+    volumes:
+      - ./rnode3/data:/data
+      - ./rnode3/config:/etc/redis
+    command: ["redis-server","/etc/redis/redis.conf"]
+#    restart: always
+
+  node4:
+    container_name: redis-node4
+    image: redis:6.2.12
+    ports:
+      - 6384:6384
+      - 16384:16384
+    volumes:
+      - ./rnode4/data:/data
+      - ./rnode4/config:/etc/redis
+    command: ["redis-server","/etc/redis/redis.conf"]
+#    restart: always
+
+  node5:
+    container_name: redis-node5
+    image: redis:6.2.12
+    ports:
+      - 6385:6385
+      - 16385:16385
+    volumes:
+      - ./rnode5/data:/data
+      - ./rnode5/config:/etc/redis/
+    command: ["redis-server","/etc/redis/redis.conf"]
+#    restart: always
+
+  node6:
+    container_name: redis-node6
+    image: redis:6.2.12
+    ports:
+      - 6386:6386
+      - 16386:16386
+    volumes:
+      - ./rnode6/data:/data
+      - ./rnode6/config:/etc/redis/
+    command: ["redis-server","/etc/redis/redis.conf"]
+#    restart: always
+
+  standAlone:
+    container_name: redis-server
+    image: redis:6.2.12
+    ports:
+      - 6379:6379
+    volumes:
+      - ./standAlone/data:/data
+#      - ./conf:/etc/redis/
+#    command: ["redis-server","/etc/redis/redis.conf"]
+
