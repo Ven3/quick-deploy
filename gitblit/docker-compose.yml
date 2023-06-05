@@ -11,4 +11,5 @@ services:
       - 9418:9418
       - 29418:29418
     volumes:
-      - ./data/:/var/opt/gitblit/srv
+      - ./repo/:/var/opt/gitblit/srv
+      - ./groovy:/var/opt/gitblit/etc/groovy
